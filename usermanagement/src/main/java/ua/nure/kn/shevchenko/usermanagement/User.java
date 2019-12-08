@@ -20,6 +20,9 @@ public class User implements Serializable {
     	this.dateOfBirth = dateOfBirth;
     }
     
+    public User() {
+    }
+    
 	public long getId() {
 		return id;
 	}

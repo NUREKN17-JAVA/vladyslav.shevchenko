@@ -37,6 +37,6 @@ public class UserTest extends TestCase {
     	LocalDate localdate = LocalDate.now().minusDays(365);
     	Date date = Date.from(localdate.atStartOfDay(ZoneId.systemDefault()).toInstant());
     	User test_user = new User(1L, FIRST_NAME, LAST_NAME, date);
-        assertEquals(AGE-1, test_user.getAge());
+        assertEquals(1, test_user.getAge());
         }
   }
