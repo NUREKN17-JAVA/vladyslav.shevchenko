@@ -8,23 +8,30 @@ import java.util.Date;
 
 public class User implements Serializable {
 	static final long serialVersionUID = -6321546794596617232L;
-    private long id;
+    private Long id;
     private String firstName;
     private String lastName;
     private Date dateOfBirth;
     
-    public User(long id, String firstName, String lastName, Date dateOfBirth) {
+    public User(Long id, String firstName, String lastName, Date dateOfBirth) {
     	this.id = id;
     	this.firstName = firstName;
     	this.lastName = lastName;
     	this.dateOfBirth = dateOfBirth;
     }
     
-    public User() {
+    public User(String firstName, String lastName, Date date) {
+    	this.firstName = firstName;
+    	this.lastName = lastName;
+    	this.dateOfBirth  = date;
     }
     
-	public long getId() {
-		return id;
+	public User() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public Long getId() {
+		return this.id;
 	}
 	public void setId(long id) {
 		this.id = id;
@@ -56,6 +63,27 @@ public class User implements Serializable {
 		LocalDate birthDate = dateOfBirth.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(); 
 		Period p = Period.between(birthDate, today);
 		return p.getYears();
+    }
+	
+	public boolean equals(Object obj){
+		if (obj == null)
+			return false;
+		
+		if (this == obj)
+			return true;
+		
+		if (this.getId() == null && ((User) obj).getId() == null)
+            return true;
+        
+		
+		return super.equals(((User) obj).getId());
+	}
+	
+	public int hashCode() {
+        if (this.getId() == null) {
+            return 0;
+        }
+        return this.getId().hashCode();
     }
 
 }

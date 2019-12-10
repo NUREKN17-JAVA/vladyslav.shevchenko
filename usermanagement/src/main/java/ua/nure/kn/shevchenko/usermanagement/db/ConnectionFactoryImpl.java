@@ -3,6 +3,8 @@ package ua.nure.kn.shevchenko.usermanagement.db;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Properties;
+
 
 public class ConnectionFactoryImpl implements ConnectionFactory {
 	
@@ -18,7 +20,13 @@ public class ConnectionFactoryImpl implements ConnectionFactory {
 		this.user = "sa";
 		this.password = "";
 	}
-
+	public ConnectionFactoryImpl(Properties properties) {
+		this.user = properties.getProperty("connection.user");
+		this.password = properties.getProperty("connection.password");
+		this.driver = properties.getProperty("connection.driver");
+		this.url = properties.getProperty("connection.url");
+	}
+	
 	public Connection createConnection() throws DatabaseException {
 		
 		

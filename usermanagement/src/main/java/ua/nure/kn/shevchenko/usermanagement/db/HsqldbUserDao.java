@@ -109,7 +109,7 @@ class HsqldbUserDao implements UserDAO {
                 user.setId(resultSet.getLong(1));
                 user.setFirstName(resultSet.getString(2));
                 user.setLastName(resultSet.getString(3));
-                user.setDateOfBirth(resultSet.getDate(4));
+                user.setDateOfBirth(new java.util.Date(resultSet.getDate(4).getTime()));
                 return user;
             }
             throw new DatabaseException("Can not find user by id: " + id);
