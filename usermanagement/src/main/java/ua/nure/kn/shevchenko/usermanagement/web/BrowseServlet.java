@@ -109,7 +109,7 @@ public class BrowseServlet extends HttpServlet {
 	}
 
 	private void browse(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, ReflectiveOperationException {
-		Collection users;
+		Collection<User> users;
 		try {
 			users = DaoFactory.getInstance().getUserDao().findAll();
 			req.getSession().setAttribute("users", users);

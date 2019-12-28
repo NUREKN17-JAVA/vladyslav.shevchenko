@@ -45,6 +45,14 @@ public class HsqldbUserDaoTest extends DatabaseTestCase  {
 			assertNotNull(precreated_user);
 			assertNotNull(precreated_user.getId());
 	}
+	
+	public void testFindByFNandLN() throws DatabaseException {
+		assertNotNull(precreated_user.getId());
+		Collection<User> foundUsers = db_user.find(precreated_user.getFirstName(), precreated_user.getLastName());
+		assertNotNull(foundUsers);
+		assertEquals(precreated_user.getId(), foundUsers.iterator().next().getId());
+	}
+	
 	public void testUpdate() {
 		try {
 			precreated_user.setFirstName("CHANGED_NAME");
